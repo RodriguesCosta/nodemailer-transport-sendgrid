@@ -3,14 +3,14 @@
 const sgMail = require('@sendgrid/mail');
 
 class NodemailerTransportSendGrid {
-  constructor(options) {
-    this.options = options || {}
-    if (options.apiKey) {
-      sgMail.setApiKey(options.apiKey)
+
+  constructor(apiKey) {
+    if (apiKey) {
+      sgMail.setApiKey(apiKey);
     }
   }
 
-  send(mail) {
+  send(mail, callback) {
     mail.normalize((err, source) => {
       if (err)
         throw err
@@ -120,9 +120,14 @@ class NodemailerTransportSendGrid {
         }
       }
 
-      return sgMail.send(msg);
+      sgMail.send(msg, callback);
     });
   }
 }
 
-module.exports = options => new NodemailerTransportSendGrid(options);
+/** 
+ * Creat Nodemailer Transport SendGrid
+ * @param {string} apiKey - The apiKey sendgrid. 
+ * @return {NodemailerTransportSendGrid} - Nodemailer Transport SendGrid
+ */
+module.exports = apiKey => new NodemailerTransportSendGrid(apiKey);
