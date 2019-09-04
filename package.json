@@ -1,0 +1,17 @@
+{
+  "name": "nodemailer-transport-sendgrid",
+  "version": "1.0.0",
+  "description": "Transport for nodemailer using sendgrid",
+  "main": "index.js",
+  "repository": "https://github.com/RodriguesCosta/nodemailer-transport-sendgrid.git",
+  "keywords": [
+    "nodemailer",
+    "sendgrid",
+    "transport"
+  ],
+  "author": "Rodrigues Costa <rodriguescosta@rodriguescosta.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "^6.4.0"
+  }
+}
